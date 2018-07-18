@@ -7,6 +7,7 @@ import com.lizij.jetpackdemo.model.Repo
 
 @Dao
 interface RepoDao {
+
     @Insert(onConflict = REPLACE)
     fun insert(repo: Repo)
 

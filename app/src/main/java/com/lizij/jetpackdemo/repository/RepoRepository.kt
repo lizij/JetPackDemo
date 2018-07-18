@@ -9,6 +9,7 @@ import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 
 class RepoRepository {
+
     private val mRepoDao: RepoDao? = MyApplication.getDataBase()?.repoDao()
 
     fun loadRepos(repos: MutableLiveData<List<Repo>>, username: String) {

@@ -7,12 +7,12 @@
     tools:context=".activity.RepoActivity">
 
     <EditText
-        android:id="@+id/mGithubUserName"
+        android:id="@+id/mGithubOwnerName"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:hint="@string/github_user_name"
+        android:hint="@string/github_owner_name"
         android:inputType="text"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/search"
@@ -26,9 +26,9 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/search"
-        app:layout_constraintBottom_toBottomOf="@+id/mGithubUserName"
+        app:layout_constraintBottom_toBottomOf="@+id/mGithubOwnerName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/mGithubUserName"
+        app:layout_constraintLeft_toRightOf="@id/mGithubOwnerName"
         app:layout_constraintTop_toTopOf="parent" />
 
     <view

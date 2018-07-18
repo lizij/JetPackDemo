@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         requestPermissions()
 
-        liveDataDemo.setOnClickListener {
+        lifeCycleDemo.setOnClickListener {
             val intent = Intent(this@MainActivity, RepoActivity::class.java)
             startActivity(intent)
         }

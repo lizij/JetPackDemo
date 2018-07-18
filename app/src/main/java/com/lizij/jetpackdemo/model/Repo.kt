@@ -11,6 +11,7 @@ import java.io.Serializable
 
 @Entity(tableName = "repos")
 class Repo : Serializable {
+
     @PrimaryKey
     @ColumnInfo(name = "id")
     @SerializedName("id")

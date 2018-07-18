@@ -7,6 +7,7 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 class Owner : Serializable {
+
     @SerializedName("login")
     @ColumnInfo(name = "owner_name")
     var username: String? = null

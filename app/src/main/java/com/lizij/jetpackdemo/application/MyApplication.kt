@@ -5,8 +5,9 @@ import android.arch.persistence.room.Room
 import com.lizij.jetpackdemo.db.database.GithubDatabase
 
 class MyApplication : Application() {
+
     companion object {
-        private val DATABASE_NAME = "github"
+        private const val DATABASE_NAME = "github"
         var githubDatabase: GithubDatabase? = null
         fun getDataBase(): GithubDatabase? {
             return githubDatabase
