@@ -1,5 +1,6 @@
 package com.lizij.jetpackdemo.api
 
+import com.lizij.jetpackdemo.BuildConfig
 import com.lizij.jetpackdemo.model.Repo
 
 import io.reactivex.Observable
@@ -13,7 +14,6 @@ import retrofit2.http.Path
 object GithubApi {
 
     private const val BASE_URL = "https://api.github.com/"
-    private const val AUTH_KEY = "token 4c8b311ec19763cb62fc2ef77dc1ded048ef53da"
     val api: Api
 
     init {
@@ -26,7 +26,7 @@ object GithubApi {
     }
 
     interface Api {
-        @Headers("Authorization:$AUTH_KEY")
+        @Headers("Authorization:token ${BuildConfig.GITHUB_ACCESS_TOKEN}")
         @GET("users/{user}/repos")
         fun listRepos(@Path("user") user: String): Observable<List<Repo>>
     }

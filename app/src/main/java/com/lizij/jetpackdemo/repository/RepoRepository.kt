@@ -19,7 +19,6 @@ class RepoRepository {
                     val repoList = mRepoDao?.loadWithUsername(it)
                     if (repoList != null && repoList.isNotEmpty()) {
                         repos.postValue(repoList)
-                        return@subscribe
                     }
                     loadFromNetwork(repos, username)
                 }

@@ -36,7 +36,9 @@ class RepoActivity : AppCompatActivity(){
                 if (mRepoAdapter == null) {
                     mRepoAdapter = RepoAdapter(this@RepoActivity, mRepoViewModel?.repos?.value)
                     this@RepoActivity.mRepoListView?.adapter = mRepoAdapter
-                    this@RepoActivity.mRepoListView?.layoutManager = LinearLayoutManager(this@RepoActivity)
+                    val layoutManager = LinearLayoutManager(this@RepoActivity)
+                    layoutManager.stackFromEnd = true
+                    this@RepoActivity.mRepoListView?.layoutManager = layoutManager
                 } else {
                     mRepoAdapter?.updateRepos(repoList)
                 }
