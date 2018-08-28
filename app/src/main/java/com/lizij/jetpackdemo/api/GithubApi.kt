@@ -1,11 +1,11 @@
 package com.lizij.jetpackdemo.api
 
+import bolts.Task
 import com.lizij.jetpackdemo.BuildConfig
 import com.lizij.jetpackdemo.model.Repo
+import com.lizij.jetpackdemo.retrofit.adapter.TaskCallAdapterFactory
 
-import io.reactivex.Observable
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -20,7 +20,7 @@ object GithubApi {
         val client = Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addCallAdapterFactory(TaskCallAdapterFactory.create())
                 .build()
         api = client.create(Api::class.java)
     }
@@ -28,6 +28,6 @@ object GithubApi {
     interface Api {
         @Headers("Authorization:token ${BuildConfig.GITHUB_ACCESS_TOKEN}")
         @GET("users/{user}/repos")
-        fun listRepos(@Path("user") user: String): Observable<List<Repo>>
+        fun listRepos(@Path("user") user: String): Task<List<Repo>>
     }
 }
