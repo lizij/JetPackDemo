@@ -1,4 +1,4 @@
-package com.lizij.jetpackdemo.model
+package com.lizij.jetpackdemo.data.model
 
 import android.arch.persistence.room.ColumnInfo
 

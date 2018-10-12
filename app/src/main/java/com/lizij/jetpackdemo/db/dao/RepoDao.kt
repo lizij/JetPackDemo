@@ -3,7 +3,7 @@ package com.lizij.jetpackdemo.db.dao
 
 import android.arch.persistence.room.*
 import android.arch.persistence.room.OnConflictStrategy.REPLACE
-import com.lizij.jetpackdemo.model.Repo
+import com.lizij.jetpackdemo.data.model.Repo
 
 @Dao
 interface RepoDao {

@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">JetPackDemo</string>
+    <string name="app_name">Github Client</string>
     <string name="lifecycle_demo">LifeCycleDemo</string>
     <string name="github_owner_name">Github用户名</string>
     <string name="search">查询</string>
+    <string name="github_api_url">"https://api.github.com"</string>
+    <string name="github_database_name">github</string>
 </resources>
