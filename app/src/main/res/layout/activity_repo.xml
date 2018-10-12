@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".activity.RepoActivity">
 
+    <!--app:layout_constrainedHeight="true" pretend RecyclerView exceed-->
     <android.support.v7.widget.RecyclerView
         android:id="@+id/mRepoListView"
         android:layout_width="match_parent"
@@ -18,13 +19,15 @@
         app:layout_constraintBottom_toTopOf="@id/searchBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constrainedHeight="true"
+        tools:listitem="@layout/item_repo" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/searchBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_white"
+        android:background="@color/white"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent">
 

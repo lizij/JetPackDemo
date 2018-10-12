@@ -1,4 +1,4 @@
-package work
+package com.lizij.jetpackdemo.work
 
 import androidx.work.Data
 import androidx.work.Worker

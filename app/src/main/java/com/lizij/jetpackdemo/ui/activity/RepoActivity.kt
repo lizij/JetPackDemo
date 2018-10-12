@@ -1,22 +1,22 @@
-package com.lizij.jetpackdemo.activity
+package com.lizij.jetpackdemo.ui.activity
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.lizij.jetpackdemo.R
-import com.lizij.jetpackdemo.model.Repo
-import com.lizij.jetpackdemo.viewmodel.RepoViewModel
+import com.lizij.jetpackdemo.data.model.Repo
+import com.lizij.jetpackdemo.ui.viewmodel.RepoViewModel
 import kotlinx.android.synthetic.main.activity_repo.*
 import kotlinx.android.synthetic.main.item_repo.view.*
 
-class RepoActivity : AppCompatActivity(){
+class RepoActivity : BaseActivity(){
 
     private var mRepoViewModel: RepoViewModel? = null
 
@@ -76,6 +76,11 @@ class RepoActivity : AppCompatActivity(){
             fun bindTo(repo: Repo) {
                 itemView.repoTitle?.text = repo.name
                 itemView.repoDescription?.text = repo.description
+                itemView.setOnClickListener {
+                    val intent = Intent(this@RepoActivity, WebActivity::class.java)
+                    intent.putExtra("url", repo.htmlUrl)
+                    startActivity(intent)
+                }
             }
         }
     }

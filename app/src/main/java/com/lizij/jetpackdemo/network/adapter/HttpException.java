@@ -1,4 +1,4 @@
-package com.lizij.jetpackdemo.retrofit.adapter;
+package com.lizij.jetpackdemo.network.adapter;
 
 import retrofit2.Response;
 

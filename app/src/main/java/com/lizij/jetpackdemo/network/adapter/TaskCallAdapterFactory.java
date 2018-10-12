@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.lizij.jetpackdemo.retrofit.adapter;
+package com.lizij.jetpackdemo.network.adapter;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.ParameterizedType;
