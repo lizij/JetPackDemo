@@ -1,14 +1,18 @@
 package com.lizij.jetpackdemo.ui
 
+import android.app.Activity
 import android.app.Application
 import com.frogermcs.androiddevmetrics.AndroidDevMetrics
 import com.lizij.jetpackdemo.db.GithubDatabase
 import com.lizij.jetpackdemo.db.GithubDatabaseModule
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasActivityInjector
 import javax.inject.Inject
 
-class MyApplication : Application() {
+class MyApplication : Application(), HasActivityInjector {
     @Inject lateinit var githubDatabase: GithubDatabase
-//    lateinit var appComponent: AppComponent
+    @Inject lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
 
     override fun onCreate() {
         super.onCreate()
@@ -25,6 +29,10 @@ class MyApplication : Application() {
     override fun onTerminate() {
         super.onTerminate()
         githubDatabase.close()
+    }
+
+    override fun activityInjector(): AndroidInjector<Activity> {
+        return dispatchingAndroidInjector
     }
 
     companion object {

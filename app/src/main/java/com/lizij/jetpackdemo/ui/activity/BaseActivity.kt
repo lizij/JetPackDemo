@@ -9,11 +9,12 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkStatus
 import com.lizij.jetpackdemo.work.MyWorker
+import dagger.android.AndroidInjection
 
 abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-
         initWorkManager()
     }
 

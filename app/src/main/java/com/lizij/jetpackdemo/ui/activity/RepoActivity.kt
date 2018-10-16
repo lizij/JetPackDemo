@@ -1,7 +1,6 @@
 package com.lizij.jetpackdemo.ui.activity
 
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -15,10 +14,12 @@ import com.lizij.jetpackdemo.data.model.Repo
 import com.lizij.jetpackdemo.ui.viewmodel.RepoViewModel
 import kotlinx.android.synthetic.main.activity_repo.*
 import kotlinx.android.synthetic.main.item_repo.view.*
+import javax.inject.Inject
 
 class RepoActivity : BaseActivity(){
 
-    private var mRepoViewModel: RepoViewModel? = null
+    @Inject
+    lateinit var mRepoViewModel: RepoViewModel
 
     private var mRepoAdapter: RepoAdapter? = null
 
@@ -26,15 +27,13 @@ class RepoActivity : BaseActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_repo)
 
-        mRepoViewModel = ViewModelProviders.of(this).get(RepoViewModel::class.java)
+        mRepoViewModel.ownerName.observe(this, Observer { mRepoViewModel.loadRepos() })
 
-        mRepoViewModel?.ownerName?.observe(this, Observer { mRepoViewModel?.loadRepos() })
-
-        mRepoViewModel?.repos?.observe(this, Observer { repoList ->
+        mRepoViewModel.repos.observe(this, Observer { repoList ->
             if (repoList != null) {
                 // 创建RepoAdapter或更新adapter中的repoList
                 if (mRepoAdapter == null) {
-                    mRepoAdapter = RepoAdapter(this@RepoActivity, mRepoViewModel?.repos?.value)
+                    mRepoAdapter = RepoAdapter(this@RepoActivity, mRepoViewModel.repos.value)
                     this@RepoActivity.mRepoListView?.adapter = mRepoAdapter
                     val layoutManager = LinearLayoutManager(this@RepoActivity)
                     layoutManager.stackFromEnd = true
@@ -47,8 +46,8 @@ class RepoActivity : BaseActivity(){
 
         search.setOnClickListener {
             val ownerName:String = mGithubOwnerName?.editableText.toString()
-            if (!ownerName.equals(mRepoViewModel?.ownerName?.value)) {
-                mRepoViewModel?.ownerName?.value = ownerName
+            if (!ownerName.equals(mRepoViewModel.ownerName.value)) {
+                mRepoViewModel.ownerName.value = ownerName
             }
         }
 
